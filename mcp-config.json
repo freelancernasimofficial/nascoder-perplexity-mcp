@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "nascoder-perplexity-ultra-pro": {
+      "command": "node",
+      "args": ["/Users/freelancernasim/nascoder-perplexity-mcp/index.js"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      },
+      "description": "NasCoder Perplexity MCP Ultra-Pro - Advanced AI search with caching, analytics, and structured responses"
+    }
+  }
+}

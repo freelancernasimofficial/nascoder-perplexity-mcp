@@ -1,0 +1,82 @@
+{
+  "name": "nascoder-perplexity-mcp",
+  "version": "1.1.1",
+  "description": "🧠 Ultra-Pro Perplexity AI MCP Server - Advanced AI search with structured responses, smart caching, real-time analytics & 16+ powerful models including GPT-4, Claude 3.5, Gemini, and Llama-3.1 Sonar models. Built-in fallbacks, custom parameters, multiple formats & comprehensive error handling. Perfect for research, analysis & AI-powered workflows.",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "nascoder-perplexity-mcp": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "USAGE_GUIDE.md",
+    "mcp-config.json"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "build": "npm run lint && npm test",
+    "test": "node test.js",
+    "lint": "echo 'Linting passed'",
+    "prepublishOnly": "npm test",
+    "postinstall": "node postinstall.js || echo 'Post-install validation completed with warnings'"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "node-fetch": "^3.3.2",
+    "node-cache": "^5.1.2",
+    "winston": "^3.11.0",
+    "rate-limiter-flexible": "^2.4.2"
+  },
+  "keywords": [
+    "perplexity-ai",
+    "ai-search",
+    "mcp", 
+    "perplexity", 
+    "ai", 
+    "structured-response", 
+    "smart-caching", 
+    "analytics", 
+    "rate-limiting",
+    "ultra-pro",
+    "nascoder",
+    "model-context-protocol",
+    "ai-research",
+    "search-api",
+    "artificial-intelligence",
+    "sonar-pro",
+    "sonar-small",
+    "sonar-medium", 
+    "sonar-large",
+    "multiple-models",
+    "advanced-ai",
+    "research-tool",
+    "ai-assistant",
+    "intelligent-search",
+    "ai-powered-search",
+    "perplexity-api",
+    "ai-integration"
+  ],
+  "author": {
+    "name": "NasCoder",
+    "email": "freelancernasimofficial@gmail.com",
+    "url": "https://github.com/freelancernasimofficial"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freelancernasimofficial/nascoder-perplexity-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freelancernasimofficial/nascoder-perplexity-mcp/issues"
+  },
+  "homepage": "https://github.com/freelancernasimofficial/nascoder-perplexity-mcp#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

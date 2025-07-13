@@ -1,0 +1,5 @@
+
+# Runtime logs and analytics
+nascoder-perplexity.log
+nascoder-analytics.json
+node_modules/
