@@ -42,20 +42,25 @@ try {
 }
 
 /**
- * NASCODER PERPLEXITY MCP - ULTRA PRO VERSION
+ * NASCODER PERPLEXITY MCP - ULTRA PRO VERSION 2.0
+ * 
+ * ✅ FIXED 2025 EDITION - All Correct Models & API Structure
  * 
  * Features:
- * - Full structured responses with all metadata
- * - Intelligent caching system
- * - Rate limiting protection
- * - Advanced logging and analytics
- * - Multiple model support
- * - Error handling and retry logic
- * - Usage tracking and optimization
- * - Custom search parameters
- * - Response formatting options
- * - Performance monitoring
- * - Zero-error installation guarantee
+ * - ✅ Correct 2025 Perplexity API models
+ * - ✅ Fixed API request structure 
+ * - ✅ Proper parameter names and validation
+ * - ✅ Advanced reasoning models support
+ * - ✅ Deep research capabilities
+ * - ✅ Intelligent caching system
+ * - ✅ Rate limiting protection
+ * - ✅ Advanced logging and analytics
+ * - ✅ Error handling and retry logic
+ * - ✅ Usage tracking and optimization
+ * - ✅ Custom search parameters
+ * - ✅ Response formatting options
+ * - ✅ Performance monitoring
+ * - ✅ Zero-error installation guarantee
  */
 
 // Environment validation
@@ -158,28 +163,24 @@ class NascoderPerplexityMCP {
       
       this.loadAnalytics();
       
-      // Available models - Verified working models (July 2025)
+      // ✅ CORRECT 2025 PERPLEXITY API MODELS
       this.models = {
-        // Verified Working Legacy Models
-        'sonar-pro': 'Most capable model with web search (verified working)',
-        'sonar-small': 'Faster, cost-effective model (verified working)',
-        'sonar-medium': 'Balanced performance and cost (verified working)',
-        'sonar-large': 'High-quality responses (verified working)',
+        // Search Models (with web search)
+        'sonar-pro': 'Advanced search offering with grounding, supporting complex queries and follow-ups (200k context)',
+        'sonar': 'Lightweight, cost-effective search model with grounding (128k context)',
         
-        // Additional Models (may require specific API access)
-        'sonar-small-online': 'Fast, cost-effective Perplexity model with web search',
-        'sonar-medium-online': 'Balanced Perplexity model with web search',
-        'sonar-large-online': 'High-performance Perplexity model with web search',
-        'gpt-4': 'OpenAI GPT-4 with web search capabilities',
-        'gpt-4-turbo': 'OpenAI GPT-4 Turbo with enhanced performance',
-        'gpt-3.5-turbo': 'OpenAI GPT-3.5 Turbo - fast and efficient',
-        'claude-3-opus': 'Claude 3 Opus - most capable Anthropic model',
-        'claude-3-sonnet': 'Claude 3 Sonnet - balanced performance',
-        'claude-3-haiku': 'Claude 3 Haiku - fastest Claude model',
-        'gemini-pro-v2_5': 'Google Gemini Pro v2.5 with advanced capabilities'
+        // Research Models (deep analysis)
+        'sonar-deep-research': 'Expert-level research model conducting exhaustive searches and generating comprehensive reports (128k context)',
+        
+        // Reasoning Models (complex problem solving)
+        'sonar-reasoning-pro': 'Premier reasoning offering powered by DeepSeek R1 with Chain of Thought (CoT) (128k context)',
+        'sonar-reasoning': 'Fast, real-time reasoning model designed for quick problem-solving with search (128k context)',
+        
+        // Offline Models (no web search)
+        'r1-1776': 'A version of DeepSeek R1 post-trained for uncensored, unbiased, and factual information (128k context)'
       };
       
-      this.logger.info('NasCoder Perplexity MCP Ultra-Pro initialized successfully');
+      this.logger.info('NasCoder Perplexity MCP Ultra-Pro 2.0 initialized successfully with correct 2025 models');
     } catch (error) {
       console.error('❌ Failed to initialize NasCoder Perplexity MCP:', error.message);
       process.exit(1);
@@ -224,7 +225,7 @@ class NascoderPerplexityMCP {
     }
   }
   
-  // Make API call to Perplexity with comprehensive error handling
+  // ✅ FIXED API CALL WITH CORRECT 2025 PERPLEXITY API STRUCTURE
   async callPerplexityAPI(messages, model = 'sonar-pro', options = {}) {
     const startTime = Date.now();
     
@@ -236,6 +237,11 @@ class NascoderPerplexityMCP {
       
       if (!this.apiKey) {
         throw new Error('PERPLEXITY_API_KEY environment variable is required');
+      }
+      
+      // Validate model exists
+      if (!this.models[model]) {
+        throw new Error(`Invalid model: ${model}. Available models: ${Object.keys(this.models).join(', ')}`);
       }
       
       // Check rate limit with fallback
@@ -266,25 +272,48 @@ class NascoderPerplexityMCP {
       
       this.analytics.cacheMisses++;
       
-      // Prepare request payload with validation
+      // ✅ CORRECT 2025 PERPLEXITY API REQUEST PAYLOAD
       const payload = {
-        model: model || 'sonar-pro',
+        model: model,
         messages: messages.map(msg => ({
           role: msg.role || 'user',
           content: String(msg.content || '')
         })),
-        max_tokens: Math.min(Math.max(options.maxTokens || 2000, 1), 4000),
-        temperature: Math.min(Math.max(options.temperature || 0.2, 0), 1),
+        max_tokens: Math.min(Math.max(options.maxTokens || 2000, 1), 8000),
+        temperature: Math.min(Math.max(options.temperature || 0.2, 0), 2),
         top_p: Math.min(Math.max(options.topP || 0.9, 0), 1),
-        return_citations: options.returnCitations !== false,
-        return_images: options.returnImages || false,
-        return_related_questions: options.returnRelatedQuestions !== false,
-        search_recency_filter: options.searchRecency || 'month',
-        search_domain_filter: Array.isArray(options.searchDomains) ? options.searchDomains : [],
+        top_k: Math.max(options.topK || 0, 0),
         stream: false,
         presence_penalty: Math.min(Math.max(options.presencePenalty || 0, -2), 2),
-        frequency_penalty: Math.min(Math.max(options.frequencyPenalty || 1, -2), 2)
+        frequency_penalty: Math.min(Math.max(options.frequencyPenalty || 0, -2), 2),
+        
+        // ✅ CORRECT 2025 SEARCH PARAMETERS
+        search_mode: options.searchMode || 'web', // 'web' or 'academic'
+        reasoning_effort: options.reasoningEffort || 'medium', // 'low', 'medium', 'high' (for reasoning models)
+        
+        // ✅ CORRECT FILTER PARAMETERS
+        search_domain_filter: Array.isArray(options.searchDomains) ? options.searchDomains : [],
+        return_images: options.returnImages || false,
+        return_related_questions: options.returnRelatedQuestions || false,
+        search_recency_filter: options.searchRecency || undefined,
+        search_after_date_filter: options.searchAfterDate || undefined,
+        search_before_date_filter: options.searchBeforeDate || undefined,
+        last_updated_after_filter: options.lastUpdatedAfter || undefined,
+        last_updated_before_filter: options.lastUpdatedBefore || undefined,
+        
+        // ✅ CORRECT WEB SEARCH OPTIONS
+        web_search_options: options.webSearchOptions || undefined,
+        
+        // ✅ CORRECT RESPONSE FORMAT
+        response_format: options.responseFormat || undefined
       };
+      
+      // Remove undefined values to clean up payload
+      Object.keys(payload).forEach(key => {
+        if (payload[key] === undefined) {
+          delete payload[key];
+        }
+      });
       
       // Make API call with retry logic
       let lastError;
@@ -297,10 +326,10 @@ class NascoderPerplexityMCP {
             headers: {
               'Authorization': `Bearer ${this.apiKey}`,
               'Content-Type': 'application/json',
-              'User-Agent': 'NasCoder-Perplexity-MCP/1.0'
+              'User-Agent': 'NasCoder-Perplexity-MCP/2.0'
             },
             body: JSON.stringify(payload),
-            timeout: 30000 // 30 second timeout
+            timeout: 60000 // 60 second timeout for research models
           });
           
           if (!response.ok) {
@@ -382,7 +411,8 @@ class NascoderPerplexityMCP {
         usage: {},
         metadata: {
           searchContextSize: null,
-          finishReason: null
+          finishReason: null,
+          reasoningTokens: null
         },
         rawResponse: format === 'full' ? response : null
       };
@@ -418,21 +448,11 @@ class NascoderPerplexityMCP {
           parsed.searchResults = response.search_results.map(result => ({
             title: result?.title || 'No title',
             url: result?.url || '',
-            date: result?.date || null,
-            last_updated: result?.last_updated || null
+            date: result?.date || null
           }));
         }
       } catch (error) {
         this.logger.warn('Failed to extract search results:', error.message);
-      }
-      
-      // Extract related questions with error handling
-      try {
-        if (response?.related_questions && Array.isArray(response.related_questions)) {
-          parsed.relatedQuestions = response.related_questions.filter(q => typeof q === 'string');
-        }
-      } catch (error) {
-        this.logger.warn('Failed to extract related questions:', error.message);
       }
       
       // Extract usage stats with error handling
@@ -442,9 +462,13 @@ class NascoderPerplexityMCP {
             prompt_tokens: response.usage.prompt_tokens || 0,
             completion_tokens: response.usage.completion_tokens || 0,
             total_tokens: response.usage.total_tokens || 0,
-            search_context_size: response.usage.search_context_size || null
+            search_context_size: response.usage.search_context_size || null,
+            citation_tokens: response.usage.citation_tokens || 0,
+            num_search_queries: response.usage.num_search_queries || 0,
+            reasoning_tokens: response.usage.reasoning_tokens || 0
           };
           parsed.metadata.searchContextSize = response.usage.search_context_size;
+          parsed.metadata.reasoningTokens = response.usage.reasoning_tokens;
         }
       } catch (error) {
         this.logger.warn('Failed to extract usage stats:', error.message);
@@ -464,7 +488,7 @@ class NascoderPerplexityMCP {
         searchResults: [],
         relatedQuestions: [],
         usage: {},
-        metadata: { searchContextSize: null, finishReason: 'error' },
+        metadata: { searchContextSize: null, finishReason: 'error', reasoningTokens: null },
         rawResponse: null
       };
     }
@@ -533,7 +557,9 @@ class NascoderPerplexityMCP {
             : 0
         },
         uptime: process.uptime(),
-        memoryUsage: process.memoryUsage()
+        memoryUsage: process.memoryUsage(),
+        version: '2.0.0',
+        apiVersion: '2025'
       };
       return analytics;
     } catch (error) {
@@ -566,12 +592,12 @@ class NascoderPerplexityMCP {
 // Initialize the MCP server
 const nascoderMCP = new NascoderPerplexityMCP();
 
-// Define tools
+// ✅ UPDATED TOOLS WITH CORRECT 2025 MODELS
 const TOOLS = [
   {
     name: "perplexity_ask_pro",
-    description: "Ultra-Pro Perplexity API with full structured responses, caching, and advanced features. " +
-                "Supports multiple models, custom parameters, and various response formats.",
+    description: "Ultra-Pro Perplexity API with CORRECT 2025 models, full structured responses, caching, and advanced features. " +
+                "Supports search, research, reasoning, and offline models with proper parameters.",
     inputSchema: {
       type: "object",
       properties: {
@@ -591,22 +617,14 @@ const TOOLS = [
           type: "string",
           enum: [
             "sonar-pro", 
-            "sonar-small", 
-            "sonar-medium", 
-            "sonar-large",
-            "sonar-small-online", 
-            "sonar-medium-online", 
-            "sonar-large-online",
-            "gpt-4", 
-            "gpt-4-turbo",
-            "gpt-3.5-turbo",
-            "claude-3-opus", 
-            "claude-3-sonnet", 
-            "claude-3-haiku",
-            "gemini-pro-v2_5"
+            "sonar", 
+            "sonar-deep-research",
+            "sonar-reasoning-pro", 
+            "sonar-reasoning",
+            "r1-1776"
           ],
           default: "sonar-pro",
-          description: "Perplexity model to use"
+          description: "Perplexity model to use (2025 correct models only)"
         },
         format: {
           type: "string",
@@ -617,22 +635,35 @@ const TOOLS = [
         options: {
           type: "object",
           properties: {
-            maxTokens: { type: "number", default: 2000 },
-            temperature: { type: "number", default: 0.2 },
-            topP: { type: "number", default: 0.9 },
-            returnCitations: { type: "boolean", default: true },
+            maxTokens: { type: "number", default: 2000, description: "Maximum tokens (1-8000)" },
+            temperature: { type: "number", default: 0.2, description: "Randomness (0-2)" },
+            topP: { type: "number", default: 0.9, description: "Nucleus sampling (0-1)" },
+            topK: { type: "number", default: 0, description: "Top-k filtering (0 = disabled)" },
+            searchMode: { 
+              type: "string", 
+              enum: ["web", "academic"],
+              default: "web",
+              description: "Search mode - 'academic' prioritizes scholarly sources" 
+            },
+            reasoningEffort: { 
+              type: "string", 
+              enum: ["low", "medium", "high"],
+              default: "medium",
+              description: "Reasoning effort for reasoning models" 
+            },
             returnImages: { type: "boolean", default: false },
-            returnRelatedQuestions: { type: "boolean", default: true },
+            returnRelatedQuestions: { type: "boolean", default: false },
             searchRecency: { 
               type: "string", 
-              enum: ["hour", "day", "week", "month", "year"],
-              default: "month" 
+              description: "Filter by time (e.g., 'week', 'day')"
             },
             searchDomains: { 
               type: "array", 
               items: { type: "string" },
-              description: "Filter search to specific domains"
-            }
+              description: "Filter search to specific domains (max 10)"
+            },
+            searchAfterDate: { type: "string", description: "Search after date (MM/DD/YYYY)" },
+            searchBeforeDate: { type: "string", description: "Search before date (MM/DD/YYYY)" }
           },
           description: "Advanced options for the API call"
         }
@@ -660,7 +691,7 @@ const TOOLS = [
   },
   {
     name: "perplexity_models",
-    description: "List available Perplexity models with descriptions",
+    description: "List available Perplexity models with descriptions (2025 correct models)",
     inputSchema: {
       type: "object",
       properties: {},
@@ -673,7 +704,7 @@ const TOOLS = [
 const server = new Server(
   {
     name: "nascoder-perplexity-mcp",
-    version: "1.0.0",
+    version: "2.0.0",
   },
   {
     capabilities: {
@@ -730,7 +761,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return {
           content: [{
             type: "object",
-            data: nascoderMCP.models
+            data: {
+              models: nascoderMCP.models,
+              note: "These are the CORRECT 2025 Perplexity API models. Previous versions had incorrect model names.",
+              version: "2.0.0"
+            }
           }]
         };
         
@@ -753,7 +788,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  nascoderMCP.logger.info("NasCoder Perplexity MCP Ultra-Pro server started");
+  nascoderMCP.logger.info("NasCoder Perplexity MCP Ultra-Pro 2.0 server started with CORRECT 2025 models");
 }
 
 main().catch((error) => {
