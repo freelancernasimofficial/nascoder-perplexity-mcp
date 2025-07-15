@@ -86,7 +86,7 @@ Add as additional server:
       "maxTokens": 1500,
       "temperature": 0.3,
       "searchRecency": "week",
-      "searchDomains": ["arxiv.org", "openai.com"],
+      "searchDomains": ["arxiv.org", "nature.com"],
       "returnRelatedQuestions": true
     }
   }
