@@ -63,7 +63,7 @@ After installation, you'll see:
 ✅ Main file is executable
 ✅ Directory is writable
 
-🎉 All 4 tests passed! Installation is perfect.
+🎉 Installation completed successfully!
 ```
 
 ### 🔧 **If You See Warnings**
