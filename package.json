@@ -1,6 +1,6 @@
 {
   "name": "nascoder-perplexity-mcp",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "🧠 Ultra-Pro Perplexity MCP Server 2.0 - Enhanced 2025 Edition with correct API models! Advanced search, deep research, reasoning models (sonar-pro, sonar-reasoning-pro, sonar-deep-research), structured responses, smart caching, real-time analytics. Professional error handling & comprehensive features.",
   "type": "module",
   "main": "index.js",
