@@ -1,7 +1,7 @@
 {
   "name": "nascoder-perplexity-mcp",
   "version": "2.1.1",
-  "description": "🧠 Ultra-Pro Perplexity MCP Server 2.0 - Enhanced 2025 Edition with correct API models! Advanced search, deep research, reasoning models (sonar-pro, sonar-reasoning-pro, sonar-deep-research), structured responses, smart caching, real-time analytics. Professional error handling & comprehensive features.",
+  "description": "🧠 Ultra-Pro Perplexity AI MCP Server 2.0 - Enhanced 2025 Edition with correct API models! Advanced AI search, deep research, reasoning models (sonar-pro, sonar-reasoning-pro, sonar-deep-research), structured responses, smart caching, real-time analytics. Professional error handling & comprehensive features.",
   "type": "module",
   "main": "index.js",
   "bin": {
@@ -29,11 +29,11 @@
     "rate-limiter-flexible": "^2.4.2"
   },
   "keywords": [
-    "perplexity",
-    "search",
+    "perplexity-ai",
+    "ai-search",
     "mcp",
     "perplexity",
-    "search-engine",
+    "ai",
     "structured-response",
     "smart-caching",
     "analytics",
@@ -54,13 +54,16 @@
     "fixed-version",
     "advanced-search",
     "research-tool",
-    "search-assistant",
+    "ai-assistant",
     "intelligent-search",
-    "powered-search",
+    "ai-powered-search",
     "perplexity-api",
-    "integration",
+    "ai-integration",
     "reasoning-models",
-    "deep-research"
+    "deep-research",
+    "claude-mcp",
+    "amazon-q-mcp",
+    "llm-tools"
   ],
   "author": {
     "name": "NasCoder",
